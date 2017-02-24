@@ -6,15 +6,16 @@ public class Stage {
 	private String intitule;
 	private String descriptif;
 	private String domaine;
-	private Date dateDebut;
+	private String dateDebut;
 	private int duree;
 	private int niveauRequis;
 	private int placeDispo;
 	
-	public Stage(int id, String ne, String inti, String dom, Date deb, int dur, int lvl, int place){
+	public Stage(int id, String ne, String inti, String desc, String dom, String deb, int dur, int lvl, int place){
 		this.idStage = id;
 		this.nomEntreprise = ne;
 		this.intitule = inti;
+		this.descriptif = desc;
 		this.domaine = dom;
 		this.dateDebut = deb;
 		this.duree = dur;
@@ -62,11 +63,11 @@ public class Stage {
 		this.domaine = domaine;
 	}
 
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
