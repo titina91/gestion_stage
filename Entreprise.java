@@ -1,6 +1,5 @@
-import java.util.*;
 
-public class Entreprise {
+public class Entreprise extends daoEntreprise{
 	private int id;
 	private String nom;
 	private String ville;
