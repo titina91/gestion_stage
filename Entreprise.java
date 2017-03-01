@@ -1,39 +1,23 @@
+import java.util.ArrayList;
 
-public class Entreprise extends daoEntreprise{
-	private int id;
-	private String nom;
+public class Entreprise  extends User implements implementsEntreprise{
+	
 	private String ville;
 	private String rue;
 	private int postale;
 	private String tel;
 	private String domaine;
 	private String mail;
-	
-	public Entreprise(int i, String n, String v, String r, int p, String t, String d, String m){
-		this.id = i;
-		this.nom = n;
+	daoEntreprise dao = new daoEntreprise();
+
+	public Entreprise( int id, String nom, String mdp, String v, String r, int p, String t, String d, String m){
+		super(id, nom, mdp);
 		this.ville = v;
 		this.rue = r;
 		this.postale = p;
 		this.tel = t;
 		this.domaine = d;
 		this.mail = m;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public String getVille() {
@@ -83,5 +67,23 @@ public class Entreprise extends daoEntreprise{
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
+	public void deposerOffre(Stage s) {
+		dao.deposerOffre(s);
+	}
+
+	public void supprimerOffre(int id) {
+		dao.supprimerOffre(id);
+	}
+
+	public void search(ArrayList<String> list) {
+		dao.search(list);
+	}
+
+	public void connect(int i, String passwrd) {
+		dao.connect(i, passwrd);
+		setState();
+	}
+
 	
 }
