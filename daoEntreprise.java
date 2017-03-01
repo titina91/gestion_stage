@@ -4,9 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.ResultSet;
 import com.mysql.jdbc.Statement;
 
-public class daoEntreprise implements implementEntreprise {
+public class daoEntreprise implements implementsEntreprise{
 
 	Connection connection;
 	final String insert = " INSERT INTO stage (idStage, intitule, descriptif, domaine, debut, duree, lvl, nomE, place) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -50,7 +51,6 @@ public class daoEntreprise implements implementEntreprise {
 
 	public void supprimerOffre(int id) {
 
-		// TODO Auto-generated method stub
 		PreparedStatement statement = null;
 		try{
 			statement = connection.prepareStatement(delete);
@@ -69,8 +69,27 @@ public class daoEntreprise implements implementEntreprise {
 
 
 	public void search(ArrayList<String> list) {
-		// TODO Auto-generated method stub
 
+	}
+
+	public void connect(int id, String passwrd){
+		PreparedStatement statement = null;
+		String sql = "SELECT * FROM entreprise";
+		System.out.println("avant");
+		
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet rs = (ResultSet) statement.executeQuery();
+			System.out.println("Load...");
+			while(rs.next()){
+				if((rs.getInt("idEntreprise") == id)&&(rs.getString("passwrd")).equals(passwrd)){
+					System.out.println("Connection en cours");
+					System.out.println("Bonjour " + rs.getString("nom"));
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 
@@ -86,11 +105,7 @@ public class daoEntreprise implements implementEntreprise {
 
 
 
-
-
-
-
-	/*
+/*
 	public void deposerOffre(Stage s) {
 		String url=  "jdbc:mysql://localhost/gestion offre stage";												// values = {"val1 ,", "val2,", "val3,",...}*
 		String login = "root";
@@ -116,7 +131,6 @@ public class daoEntreprise implements implementEntreprise {
 				cn.close();
 				st.close();
 			} catch (SQLException g) {
-				// TODO Auto-generated catch block
 				g.printStackTrace();
 			}
 		}
@@ -124,7 +138,6 @@ public class daoEntreprise implements implementEntreprise {
 	}
 
 	public void supprimerOffre(Stage s) {
-		// TODO Auto-generated method stub
 		String url=  "jdbc:mysql://localhost/gestion offre stage";												// values = {"val1 ,", "val2,", "val3,",...}*
 		String login = "root";
 		String passwd = "";
@@ -148,7 +161,6 @@ public class daoEntreprise implements implementEntreprise {
 				cn.close();
 				st.close();
 			} catch (SQLException g) {
-				// TODO Auto-generated catch block
 				g.printStackTrace();
 			}
 		}
@@ -156,9 +168,8 @@ public class daoEntreprise implements implementEntreprise {
 
 	@Override
 	public void search(ArrayList<String> list) {
-		// TODO Auto-generated method stub
 
 	}
-	 */
+ */
 
 }
