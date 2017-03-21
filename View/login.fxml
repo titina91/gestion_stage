@@ -9,9 +9,10 @@
    <children>
       <Label fx:id="idLabel" layoutX="136.0" layoutY="114.0" text="Id" />
       <TextField fx:id="idField" layoutX="186.0" layoutY="110.0" />
-      <TextField layoutX="186.0" layoutY="165.0" promptText="passwrdField" text="***" />
       <Label fx:id="passwrdLabel" layoutX="128.0" layoutY="169.0" text="Password" />
       <Button fx:id="loginButton" layoutX="289.0" layoutY="200.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Hyperlink fx:id="createLink" layoutX="204.0" layoutY="259.0" text="Create an account ?" />
+      <PasswordField fx:id="passwrdField" layoutX="186.0" layoutY="165.0" />
+      <ComboBox fx:id="stateBox" layoutX="186.0" layoutY="200.0" prefHeight="25.0" prefWidth="80.0" />
    </children>
 </AnchorPane>
