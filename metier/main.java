@@ -13,6 +13,7 @@ import java.util.*;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
+import Controler.AdminControler;
 import Controler.LoginControler;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,10 +21,10 @@ import javafx.stage.Stage;
 public class main extends Application{
 	Connection connection;
 	User user = null;
-	static LoginControler c = new LoginControler();
+	
 	public static void main(String[] args) {
 		
-		c.createStudent("nom1", "mdp1", "telephone1", "mail1", "prenom1", "filliaire1", 3);
+		//lc.createStudent("nom1", "mdp1", "telephone1", "mail1", "prenom1", "filliaire1", 3);
 		//c.createStudent("nom2", "mdp2", "telephone2", "mail2", "prenom2", "filliaire2", 5);
 
 		

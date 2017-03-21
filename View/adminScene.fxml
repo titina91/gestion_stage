@@ -48,18 +48,32 @@
             </MenuBar>
          </top>
          <center>
-            <SplitPane dividerPositions="0.004297994269340974, 0.012893982808022923, 0.02148997134670487, 0.03008595988538682" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.004297994269340974, 0.012893982808022923, 0.02148997134670487, 0.30659025787965616" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="189.0" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <AnchorPane prefHeight="573.0" prefWidth="239.0" />
+                  <AnchorPane prefHeight="573.0" prefWidth="239.0">
+                     <children>
+                        <TableView layoutY="-2.0" prefHeight="573.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
                   <AnchorPane prefHeight="574.0" prefWidth="599.0">
                      <children>
-                        <TableView layoutX="-1.0" prefHeight="573.0" prefWidth="674.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="studentTableView" editable="true" layoutX="-1.0" prefHeight="573.0" prefWidth="674.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C2" />
-                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />
+                            <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
+                              <TableColumn fx:id="passwrdColumn" prefWidth="75.0" text="passwrd" />
+                              <TableColumn fx:id="telColumn" prefWidth="75.0" text="tel" />
+                              <TableColumn fx:id="mailColumn" prefWidth="75.0" text="mail" />
+                              <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="firstName" />
+                              <TableColumn fx:id="fillColumn" prefWidth="75.0" text="fill" />
+                              <TableColumn fx:id="lvlColumn" prefWidth="75.0" text="lvl" />
                           </columns>
                         </TableView>
                      </children>

@@ -10,10 +10,15 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import metier.Entreprise;
 import metier.Etudiant;
@@ -22,6 +27,23 @@ import metier.connexion;
 
 public class LoginControler implements interfaceControler{
 
+	@FXML
+	Button loginButton = new Button();
+	@FXML
+	TextField idField = new TextField();
+	@FXML
+	PasswordField passwrdField = new PasswordField();
+	
+	ObservableList<String> options = 
+		    FXCollections.observableArrayList(
+		        "Option 1",
+		        "Option 2",
+		        "Option 3"
+		    );
+	@FXML
+	final ComboBox stateBox = new ComboBox();
+	
+	
 	Connection connection;
 	int nulle = 0 ;
 	boolean okNom = false;
@@ -35,19 +57,44 @@ public class LoginControler implements interfaceControler{
 	
 	public LoginControler(){
 		connection = (Connection) connexion.connection();
+		
+		stateBox.setItems(options);
 	}
 	
 	
-	@FXML
-	Button loginButton = new Button();
+	
+	
+	
+	
 	public void login(){
 		loginButton.setOnAction(new EventHandler<ActionEvent>(){
-
+			
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				System.out.println("qui c'est le BOSS?!!!!");
-				System.out.println("Tina Tina Tina Tina Tina");
+				String idText = idField.getText();
+				String passwrdText = passwrdField.getText();
+				
+				PreparedStatement st = null;
+				
+				try {
+					String search = "SELECT * FROM `etudiant` WHERE `id` = " + idText ;
+					//String getUser = 
+					st = connection.prepareStatement(search);
+					//st.executeQuery();
+					ResultSet rs = st.executeQuery();
+					while(rs.next()){
+						System.out.println(rs.getInt("id"));
+						System.out.println(rs.getString("name"));
+						System.out.println(rs.getInt("lvl"));
+						
+											}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				System.out.println(idText);
+				System.out.println(passwrdText);
 			}
 			
 		});
