@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.AdminControler">
    <children>
       <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
          <left>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="showDemandBtn" layoutX="10.0" layoutY="386.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" text="Afficher liste des demandes" />
-                  <Button fx:id="showStudentBtn" layoutX="10.0" layoutY="309.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="180.0" text="Afficher liste d'étudiants">
+                  <Button fx:id="showStudentBtn" layoutX="10.0" layoutY="309.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showStudent" prefHeight="27.0" prefWidth="180.0" text="Afficher liste d'étudiants">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -48,7 +48,7 @@
             </MenuBar>
          </top>
          <center>
-            <SplitPane dividerPositions="0.004297994269340974, 0.012893982808022923, 0.02148997134670487, 0.30659025787965616" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.004297994269340974, 0.012893982808022923, 0.02148997134670487, 0.3524355300859599" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="189.0" />

@@ -33,98 +33,99 @@ public class LoginControler implements interfaceControler{
 	TextField idField = new TextField();
 	@FXML
 	PasswordField passwrdField = new PasswordField();
-	
+
 	ObservableList<String> options = 
-		    FXCollections.observableArrayList(
-		        "Option 1",
-		        "Option 2",
-		        "Option 3"
-		    );
+			FXCollections.observableArrayList(
+					"Option 1",
+					"Option 2",
+					"Option 3"
+					);
+
 	@FXML
 	final ComboBox stateBox = new ComboBox();
-	
-	
+
+
 	Connection connection;
 	int nulle = 0 ;
 	boolean okNom = false;
 	boolean okMail = false;
 	boolean okMdp = false;
 	User u = null;
-	
+
 	final String insertUser = "INSERT INTO `user` (`id`, `name`, `passwrd`, `tel`, `mail`) VALUES (?,?,?,?,?) ";
 	final String lastElement = "SELECT id FROM `user` lIMIT 1 ";
 	//final String insertStudent = "INSERT INTO `etudiant` (`id`, `name`, `passwrd`, `tel`, `mail`, `firstName`, `fill`, `lvl`) VALUES (" + "null" + ",?,?,?,?,?,?,?) ";
-	
+
 	public LoginControler(){
 		connection = (Connection) connexion.connection();
-		
+
 		stateBox.setItems(options);
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	public void login(){
 		loginButton.setOnAction(new EventHandler<ActionEvent>(){
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				String idText = idField.getText();
 				String passwrdText = passwrdField.getText();
-				
+
 				PreparedStatement st = null;
-				
+
 				try {
 					String search = "SELECT * FROM `etudiant` WHERE `id` = " + idText ;
 					//String getUser = 
 					st = connection.prepareStatement(search);
-					//st.executeQuery();
+					st.executeQuery();
 					ResultSet rs = st.executeQuery();
 					while(rs.next()){
-						System.out.println(rs.getInt("id"));
-						System.out.println(rs.getString("name"));
-						System.out.println(rs.getInt("lvl"));
-						
-											}
+						System.out.println("Id:		" + rs.getInt("id"));
+						System.out.println("Nom:		" + rs.getString("name"));
+						System.out.println("Niveau:		" + rs.getInt("lvl"));
+
+					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+
 				System.out.println(idText);
 				System.out.println(passwrdText);
 			}
-			
+
 		});
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public int createUser(String nom, String mdp, String t, String m){
 		//User u = null;
 		int lastId = 0;
@@ -132,7 +133,7 @@ public class LoginControler implements interfaceControler{
 		PreparedStatement sta = null;
 
 		try{
-			
+
 			try{
 				sta = connection.prepareStatement(lastElement);
 				ResultSet rs = (ResultSet)sta.executeQuery();
@@ -144,7 +145,7 @@ public class LoginControler implements interfaceControler{
 			}
 		}finally{
 			System.out.println("lastId: " + lastId);
-						
+
 			try{
 				st1 = connection.prepareStatement(insertUser);
 				st1.setInt(1, lastId);
@@ -158,10 +159,10 @@ public class LoginControler implements interfaceControler{
 			}
 			return lastId;
 		}
-		
-		
+
+
 	}
-	
+
 
 	public void createStudent(String nom, String mdp, String t, String m, String p, String f, int lvl){
 
@@ -176,7 +177,7 @@ public class LoginControler implements interfaceControler{
 			okNom = matcherNom.matches();
 			okMail = matcherMail.matches();
 			okMdp = matcherMdp.matches();
-			
+
 			//System.out.println(matcherNom.group());
 		}catch(PatternSyntaxException pse){
 			System.out.println("erreur au niveau du mail");
@@ -198,13 +199,13 @@ public class LoginControler implements interfaceControler{
 			 */
 			PreparedStatement st1, st2 = null;
 			try{
-				
+
 				int id = createUser(nom, mdp, t, m);
 				System.out.println("Creation utilisateur reussi");
-				
+
 				final String insertStudent = "INSERT INTO `etudiant` (`id`, `name`, `passwrd`, `tel`, `mail`, `firstName`, `fill`, `lvl`) VALUES (" + id + ",?,?,?,?,?,?,?) ";
 
-				
+
 				st2 = connection.prepareStatement(insertStudent);
 				//st2.setInt(1, u.getId());
 				st2.setString(1, nom);
@@ -220,7 +221,7 @@ public class LoginControler implements interfaceControler{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		
+
 		}
 	}
 
@@ -266,8 +267,8 @@ public class LoginControler implements interfaceControler{
 		}
 		return usr;
 	}
-	
-	*/
+
+	 */
 
 
 
@@ -277,63 +278,63 @@ public class LoginControler implements interfaceControler{
 		User user = search(id, mdp, w);
 		user.setState();
 	}
-	*/
+	 */
 
 
 
 	@Override
 	public void createCompany(String nom, String mdp, String v, String r, int p, String t, String d, String m) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void deleteUser(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void removeAllUsers(List<User> users) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void addOffer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void removeOffer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void connect(int id, String mdp) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void search(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	//@Override
 	/*public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
-	*/
+	 */
 }
